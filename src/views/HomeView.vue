@@ -1,70 +1,41 @@
 <template>
   <div class="home">
+
+    <h2>{{ appTitle }}</h2>
+
+    <h3>{{ counterData.title }}</h3>
+
     <div class="btn">
       <button @click="decreaseCounter" class="btn">-</button>
-      <span class="counter">{{ counter }}</span>
+      <span class="counter">{{ counterData.count }}</span>
       <button @click="increaseCounter" class="btn">+</button>
+    </div>
+
+    <div class="edit">
+      <h4>Edit counter title:</h4>
+      <input v-model="counterData.title" type="text">
     </div>
   </div>
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { reactive } from 'vue'
 
-  const counter = ref(0)
+  const appTitle = 'My Ok Counter App'
+
+  const counterData = reactive({
+    count: 0,
+    title: 'My Counter'
+  })
 
   const increaseCounter = () => {
-    counter.value++
+    counterData.count++
   }
 
   const decreaseCounter = () => {
-    counter.value--
+    counterData.count--
   }
 </script>
-
-<!--
-<script>
-import { ref } from 'vue'
-
- export default {
-  setup() {
-    const counter = ref(0)
-
-    const increaseCounter = () => {
-      counter.value++
-    }
-
-    const decreaseCounter = () => {
-      counter.value--
-    }
-
-    return {
-      counter,
-      increaseCounter,
-      decreaseCounter
-    }
-  }
-}
-</script>
-
-<script>
-export default {
-  data() {
-    return {
-      counter: 0
-    }
-  },
-  methods: {
-    increaseCounter() {
-      this.counter++
-    },
-    decreaseCounter() {
-      this.counter--
-    }
-  }
-}
-</script>
--->
 
 <style>
 .home {
@@ -74,5 +45,8 @@ export default {
 .btn, .counter {
   font-size: 40px;
   margin: 10px;
+}
+.edit {
+  margin-top: 60px;
 }
 </style>
