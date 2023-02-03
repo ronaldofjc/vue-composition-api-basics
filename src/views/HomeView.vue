@@ -17,7 +17,7 @@
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text">
+      <input v-model="counterData.title" type="text" v-autofocus>
     </div>
   </div>
 </template>
@@ -25,6 +25,7 @@
 <script setup>
   // imports
   import { computed, onMounted, reactive, watch } from 'vue'
+  import { vAutofocus } from '@/directives/vAutofocus'
 
   // app title
   const appTitle = 'My Ok Counter App'
