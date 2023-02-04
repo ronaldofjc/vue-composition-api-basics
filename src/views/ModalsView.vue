@@ -1,33 +1,32 @@
 <template>
 	<div class="modals">
 		<h1>Modals</h1>
+		<div>
+			<label>
+				Show dark modals?
+				<input v-model="showDarkModals" type="checkbox" />
+			</label>
+		</div>
 		<button @click="showModal = true">Show modal</button>
-		<teleport to=".modals-container">
-			<div v-if="showModal" class="modal">
-				<h1>This is a modal</h1>
-				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident illum nostrum dolore unde tempore amet quidem molestiae similique facilis voluptates asperiores voluptatibus culpa numquam laborum, totam sapiente quod nisi quo?</p>
-				<button @click="showModal = false">Hide modal</button>
-			</div>
-		</teleport>
+		<component 
+			v-model="showModal" 
+			:is="showDarkModals ? ModalDark : Modal"			
+			title="My modal title (via prop)"
+		>
+			<template #title>My new Title</template>
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident illum nostrum dolore unde tempore amet quidem molestiae similique facilis voluptates asperiores voluptatibus culpa numquam laborum, totam sapiente quod nisi quo?</p>
+		</component>
 	</div>
 </template>
 
 <script setup>
-	import { ref } from "@vue/reactivity";
+	// imports 
+	import { ref } from 'vue'
+	import Modal from '@/components/Modal.vue'
+	import ModalDark from '@/components/ModalDark.vue'
 
 	// modals
 	const showModal = ref(false)
+	const showDarkModals = ref(false)
 </script>
 
-<style>
-	.modal {
-		background: beige;
-		padding: 10px;
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 1;
-	}
-</style>
