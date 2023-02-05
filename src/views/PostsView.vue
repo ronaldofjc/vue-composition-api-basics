@@ -22,7 +22,7 @@
 
 <script setup>
   import { vAutofocus } from '@/directives/vAutofocus'
-  import { useCounter } from '../use/useCounter';
+  import { useCounter } from '../use/counter';
   import { ref } from '@vue/reactivity'
 
   const posts = ref([

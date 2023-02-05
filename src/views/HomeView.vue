@@ -25,7 +25,7 @@
 <script setup>
   // imports
   import { onMounted, ref } from 'vue'
-  import { useCounter } from '../use/useCounter';
+  import { useCounter } from '../use/counter';
   import { vAutofocus } from '@/directives/vAutofocus'
 
   // app title
